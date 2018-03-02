@@ -4,7 +4,13 @@ cd ImtMonitor-master
 python init.py
 mkdir -p /usr/monitor
 mv ./* /usr/monitor
-echo '*/10 * * * *  root cd /usr/monitor && sh run.sh' >> /etc/crontab
+
+txt=$(cat /etc/crontab)
+if [[ ${txt} == *'/usr/monitor'* ]]; then
+  echo '定时任务已存在'
+else
+  echo '*/10 * * * *  root cd /usr/monitor && sh run.sh' >> /etc/crontab
+fi
 service cron restart
 cd ..
 rm -rf master.zip ImtMonitor-master
