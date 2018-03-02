@@ -26,14 +26,14 @@ def init_imt_account():
 
 
 def init_mail():
-    mail = raw_input('输入收信邮箱：')
+    mail = raw_input('输入收信邮箱(推荐使用能实时获取到邮件的邮箱)：')
     from_mail = raw_input('输入smtp邮箱：')
     pswd = raw_input('输入smtp邮箱密码（部分邮箱需要申请授权码，如qq邮箱）：')
     smtp_server = raw_input('输入smtp服务器(QQ邮箱为：smtp.qq.com)：')
-    msg = MIMEText('测试成功', 'plain', 'utf-8')
+    msg = MIMEText('星际魔盒监工邮箱测试', 'plain', 'utf-8')
     msg['From'] = _format_addr(from_mail)
     msg['To'] = _format_addr(mail)
-    msg['Subject'] = Header(u'邮箱测试', 'utf-8').encode()
+    msg['Subject'] = Header(u'https://github.com/WrBug/ImtMonitor', 'utf-8').encode()
     server = smtplib.SMTP_SSL(smtp_server)
     try:
         server.login(from_mail, pswd)
