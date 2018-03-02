@@ -9,31 +9,41 @@
 
     699453879
     
-## 觉得监工对你有用，欢迎打赏
+### 觉得监工对你有用，欢迎打赏
 
 
 **0x7D6C23b07E931bA39Bed2DBD885ca9c280946BD5**
 
-## android版钱包。支持IMT
+### android版钱包。支持IMT
 
 [https://www.coolapk.com/apk/com.wrbug.wallet][1]
-### 使用教程
 
-#### 准备工具
+
+## 配置教程
+
+### 准备工具
 
     云搬家账号（绑定设备的账号）
     收信邮箱（用于接收异常邮件）
     smtp邮箱（用于发送邮件，推荐使用qq邮箱）
     一台linux机器（强烈推荐使用星际魔盒，物尽其用,，有树莓派也可以）
-#### 配置监工服务
+### 配置监工服务
 
-1. 使用ssh登录linux，并且切换到root账户(不会的百度找教程)
+使用ssh登录linux，并且切换到root账户(不会的百度找教程)
 ```
 ssh admin@IP地址
 #输入admin的密码，默认为IMTNAS，回车后登陆
 sudo -s
 #会再提示输入密码，回车后登陆
 ```
+
+#### 1.一键配置（使用一键配置无需再次使用手动配置）
+
+`wget https://raw.githubusercontent.com/WrBug/ImtMonitor/master/setup.sh -O setup.sh && sh setup.sh`
+按照提示配置
+
+#### 2.手动配置
+
 2. 执行下面脚本：
 
 ```
@@ -44,7 +54,8 @@ cd ImtMonitor-master
 
 3. 配置账号
 
-编辑account.py文件。按照注释内容填写完整
+
+将account.py.bak的内容复制到account.py，编辑account.py文件。按照注释内容填写完整
 
 
 4. 测试配置是否正常
