@@ -63,13 +63,13 @@ cd ImtMonitor-master
 
 执行：
 
-`cd /usr/monitor &&sudo python run.py`
+`cd /usr/monitor &&sudo  -s&&python run.py`
 
 出现设备信息表示IMT账户配置成功.
 
 执行：
 
-`cd /usr/monitor &&sudo python mail.py `
+`cd /usr/monitor &&sudo -s&&python mail.py `
 
 检查邮件有收到说明邮箱配置成功
 
