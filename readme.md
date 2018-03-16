@@ -50,7 +50,7 @@ sudo -s
 
 ### 使用一键配置（使用一键配置无需再次使用手动配置）
 
-`wget https://raw.githubusercontent.com/WrBug/ImtMonitor/master/setup.sh -O setup.sh &&sudo sh setup.sh`
+`wget https://raw.githubusercontent.com/WrBug/ImtMonitor/master/setup.sh -O setup.sh &&sudo bash setup.sh`
 
 按照提示配置
 
