@@ -55,3 +55,17 @@ def get_offline_list():
     if str == '':
         return []
     return json.loads(str)
+
+
+def save_unsend_offline_list(list):
+    save_to_file(None, 'unsend_offline_list', json.dumps(list))
+
+
+def get_unsend_offline_list():
+    if not os.path.exists('unsend_offline_list'):
+        return {}
+    fh = open('unsend_offline_list', 'r')
+    str = fh.read()
+    if str == '':
+        return {}
+    return json.loads(str)

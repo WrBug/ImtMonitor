@@ -2,6 +2,7 @@ wget https://github.com/WrBug/ImtMonitor/archive/master.zip -O master.zip
 unzip master.zip
 cd ImtMonitor-master
 python init.py
+rm -rf /usr/monitor
 mkdir -p /usr/monitor
 mv ./* /usr/monitor
 

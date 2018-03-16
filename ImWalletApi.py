@@ -1,6 +1,6 @@
 import json
 
-from RpcRequest import post
+from Request import post
 from utils import get_devices_list
 
 

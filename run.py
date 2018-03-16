@@ -2,8 +2,10 @@
 import json
 from account import Account
 from ImWalletApi import ImWalletApi
+from ftqqApi import FtqqApi
 from mail import send_mail, send_exception
-from utils import save_user_sign, get_user_sign, save_devices_list, get_offline_list, save_offline_list
+from utils import save_user_sign, get_user_sign, save_devices_list, get_offline_list, save_offline_list, \
+    get_unsend_offline_list, save_unsend_offline_list
 
 
 def login(user, pswd):
@@ -56,18 +58,34 @@ def get_devices(user):
         print '磁盘总计:\t' + str(device['quotaTotal'])
         print '\n'
     print '在线：' + str(online_num) + '台，离线：' + str(offline_num)
-    list_cache = get_offline_list()
-    save_offline_list(offline_devices_name)
+    unsend_offline_list = get_unsend_offline_list()
     if offline_num > 0:
         print '发现离线设备'
-        msg = '异常设备列表：\n'
+        title = '异常设备列表'
+        msg = ''
+        un_send_cache = {}
         new_devices = False
         for name in offline_devices_name:
-            if name not in list_cache:
-                new_devices = True
-            msg += name + '\n'
+            if unsend_offline_list.has_key(name):
+                if not unsend_offline_list[name]:
+                    new_devices = True
+                    msg += name + '\n'
+                un_send_cache[name] = True
+            else:
+                un_send_cache[name] = False
         if new_devices:
-            send_exception(msg)
+            if Account.SEND_TYPE == '1':
+                msg = title + '\n' + msg
+                send_exception(msg)
+            else:
+                msg.replace('\n', '  |  ')
+                data = FtqqApi.send_wechat_msg('IMT监工，发现异常设备', msg)
+                if data == '':
+                    print '发送成功'
+                else:
+                    return
+
+        save_unsend_offline_list(un_send_cache)
 
 
 if __name__ == '__main__':
