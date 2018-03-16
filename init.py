@@ -64,6 +64,11 @@ def init_ftqq():
 
 if __name__ == '__main__':
     print '星际魔盒一键安装脚本'
+    ftqqSckey = ''
+    mail = ''
+    from_mail = ''
+    pswd = ''
+    smtp_server = ''
     while True:
         success, imt_user, imt_pass = init_imt_account()
         if not success:
