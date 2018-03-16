@@ -4,7 +4,7 @@ from constant import Constant
 
 
 def get(url):
-    cmd = "wget --quiet --method GET --header 'cache-control: no-cache' --output-document - '" + url + "'"
+    cmd = "wget -q --header 'cache-control: no-cache' --output-document - '" + url + "'"
     result = os.popen(cmd)
     result = result.read()
     return result
